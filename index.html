@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finding Maximum Consecutive Number of Binary Array</title>
+
+</head>
+<body>
+    <h1> Problem 1: Find the maximum consecutive 1s in a binaryArray</h1>
+    <h2> Solution: Algorithm Used</h2>
+    <p>
+    <ol> I initialized maxCount = 0 to store the maximum number of consecutive 1s counted. </ol> 
+    <ol> I initialized currentCount = 0 to count numbers of consecutive 1s at a given instance. </ol> 
+    <ol> I looped through the array: if the current element is 1, currentCount is increamented. 
+        If the current count is 0, maxCount is updated with the highest count between maxCount and currentCount before currentCount is reset to 0.
+    </ol>
+    <ol> I updated maxCount one more time after the loop to capture maximum consecutive 1s if the longest sequence ends the array. </ol>     
+    <ol> I returned maxCount to output the maximum consecutive 1s in the array. </ol>     
+</p>
+    <script>
+        class Solution {
+    findMaxConsecutiveOnes(nums) {
+        let maxCount = 0;
+        let currentCount = 0;
+
+        for (let num of nums) { 
+            if (num === 1) {
+                currentCount++;
+                maxCount = Math.max(maxCount, currentCount);
+            } else {
+                currentCount = 0; 
+            }
+        }
+
+        return maxCount;
+    }
+}
+
+const solution = new Solution();
+const binaryArray = [1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1];
+console.log(solution.findMaxConsecutiveOnes(binaryArray)); 
+
+
+    </script>
+</body>
+</html>
